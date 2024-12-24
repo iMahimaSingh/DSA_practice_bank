@@ -77,4 +77,68 @@ class Solution:
             while (j>0  and arr[j-1]>arr[j]):
                 arr[j-1],arr[j]=arr[j],arr[j-1]
                 j-=1
-        return arr      
+        return arr  
+
+
+# Merge sort    
+class Solution:
+
+    def mergeSort(self, arr, l, r):
+        if l < r:
+            # Find the middle point
+            mid = (l + r) // 2
+            
+            # Recursively sort the first and second halves
+            self.mergeSort(arr, l, mid)
+            self.mergeSort(arr, mid + 1, r)
+            
+            # Merge the sorted halves
+            self.merge(arr, l, mid, r)
+
+    def merge(self, arr, l, mid, r):
+        # Sizes of the two subarrays
+        n1 = mid - l + 1
+        n2 = r - mid
+        
+        # Create temp arrays
+        left = [0] * n1
+        right = [0] * n2
+        
+        # Copy data to temp arrays
+        for i in range(0, n1):
+            left[i] = arr[l + i]
+        for j in range(0, n2):
+            right[j] = arr[mid + 1 + j]
+        
+        # Merge the temp arrays back into arr[l..r]
+        i = 0  # Initial index of the first subarray
+        j = 0  # Initial index of the second subarray
+        k = l  # Initial index of the merged subarray
+        
+        while i < n1 and j < n2:
+            if left[i] <= right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+        
+        # Copy the remaining elements of left[], if any
+        while i < n1:
+            arr[k] = left[i]
+            i += 1
+            k += 1
+        
+        # Copy the remaining elements of right[], if any
+        while j < n2:
+            arr[k] = right[j]
+            j += 1
+            k += 1
+
+# Example Usage
+arr = [12, 11, 13, 5, 6, 7]
+solution = Solution()
+solution.mergeSort(arr, 0, len(arr) - 1)
+
+
