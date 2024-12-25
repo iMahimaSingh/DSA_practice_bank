@@ -141,4 +141,40 @@ arr = [12, 11, 13, 5, 6, 7]
 solution = Solution()
 solution.mergeSort(arr, 0, len(arr) - 1)
 
+#Quick sort
+
+class Solution:
+    # Function to sort a list using quick sort algorithm.
+    def quickSort(self, arr, low, high):
+        if low < high:
+            # Partition the array and get the pivot index
+            pi = self.partition(arr, low, high)
+
+            # Recursively sort elements before and after partition
+            self.quickSort(arr, low, pi - 1)
+            self.quickSort(arr, pi + 1, high)
+
+    # Function to partition the array and return the pivot index.
+    def partition(self, arr, low, high):
+        # Pivot is the last element
+        pivot = arr[high]
+        i = low - 1  # Index for the smaller element
+
+        for j in range(low, high):
+            # If the current element is less than or equal to the pivot
+            if arr[j] <= pivot:
+                i += 1  # Increment index for the smaller element
+                arr[i], arr[j] = arr[j], arr[i]  # Swap elements
+
+        # Swap the pivot element with the element at i+1
+        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        return i + 1
+
+# Example Usage
+if __name__ == "__main__":
+    arr = [4, 1, 3, 9, 7]
+    solution = Solution()
+    solution.quickSort(arr, 0, len(arr) - 1)
+    
+
 
