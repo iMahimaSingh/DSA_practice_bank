@@ -175,6 +175,32 @@ if __name__ == "__main__":
     arr = [4, 1, 3, 9, 7]
     solution = Solution()
     solution.quickSort(arr, 0, len(arr) - 1)
-    
+
+#A number n is called a factorial number if it is the factorial of a positive integer. For example, the first few factorial numbers are 1, 2, 6, 24, 120,
+#Given a number n, the task is to return the list/vector of the factorial numbers smaller than or equal to n.
+class Solution:
+    def factorialNumbers(self, n):
+    	result=[]
+    	factorial=1
+    	i=1
+    	
+    	while factorial<=n:
+    	    result.append(factorial)
+    	    i+=1
+    	    factorial*=i
+    	return result    
+    	    
+# A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+#Given a string s, return true if it is a palindrome, or false otherwise.
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        cleaned=''.join(char for char in s if char not in s[',', ' ',":"]
+        if cleaned==s:
+            return s
+        elif s=='' :
+            return s   
+        
+        
 
 
