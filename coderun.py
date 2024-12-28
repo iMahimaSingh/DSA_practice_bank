@@ -213,6 +213,35 @@ class Solution:
             return n
         return self.fib(n - 1) + self.fib(n - 2)
 
+#Given a positive integer n, count the number of digits in n that divide n evenly (i.e., without leaving a remainder). Return the total number of such digits.
+
+#A digit d of n divides n evenly if the remainder when n is divided by d is 0 (n % d == 0).
+#Digits of n should be checked individually. If a digit is 0, it should be ignored because division by 0 is undefined.
+class Solution:
+    def evenlyDivides(self, n):
+        # code here
+        count=0
+        for digits in str(n):
+            int_digits=int(digits)
+            if int_digits!=0 and n%int_digits==0:
+                 count+=1
+        return count
+
+
+#Given two integers a and b, write a function lcmAndGcd() to compute their LCM and GCD. The function inputs two integers a and b and returns a list containing their LCM and GCD.
+from math import gcd
+from typing import List
+
+class Solution:
+    def lcmAndGcd(self, a: int, b: int) -> List[int]:
+        # Calculate GCD
+        gcd_value = gcd(a, b)
+        
+        # Calculate LCM using the formula: LCM(a, b) = (a * b) // GCD(a, b)
+        lcm_value = (a * b) // gcd_value
+        
+        # Return both values as a list [LCM, GCD]
+        return [lcm_value, gcd_value]
 
       
 
