@@ -243,6 +243,45 @@ class Solution:
         # Return both values as a list [LCM, GCD]
         return [lcm_value, gcd_value]
 
+#Given an array of positive integers arr[], return the second largest element from the array. If the second largest element doesn't exist then return -1.
+
+#Note: The second largest element should not be equal to the largest element. 
+
+class Solution:
+    def getSecondLargest(self, arr):
+        # Remove duplicates to handle the case where the largest and second largest are the same
+        unique_elements = list(set(arr))
+        
+        # If less than 2 unique elements, return -1
+        if len(unique_elements) < 2:
+            return -1
+        
+        # Sort the unique elements in descending order
+        unique_elements.sort(reverse=True)
+        
+        # Return the second largest element
+        return unique_elements[1]
+
+#Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
+
+#There may be duplicates in the original array.
+
+#Note: An array A rotated by x positions results in an array B of the same length such that A[i] == B[(i+x) % A.length], where % is the modulo operation.
+
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        # Count the number of places where the order is violated
+        count = 0
+        n = len(nums)
+        
+        for i in range(n):
+            if nums[i] > nums[(i + 1) % n]:
+                count += 1
+        
+        # Array is a rotated sorted array if the order is violated at most once
+        return count <= 1
+
+
       
 
 
